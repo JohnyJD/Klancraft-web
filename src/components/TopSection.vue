@@ -1,0 +1,66 @@
+<template>
+    <div id="top">
+        <div class="left">
+            <div><h1>STAŇ SA AJ TY<br><span class="greenish">KLANCRAFTIANOM</span></h1></div>
+            <div><p>Vstúp do skvelej komunity plnej skvelých ľudí<br>Zahraj si po boku stremerov</p></div>
+            <div class="button">
+                <ButtonVue buttonText="VSTÚPIŤ"/>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+</template>
+
+<script>
+import ButtonVue from "./Buttons/Button.vue"
+export default {
+    components: {
+        ButtonVue
+    }
+}
+</script>
+
+<style scoped>
+    #top {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        background: url('@/assets/TopSectionImage.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #top:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: rgba(20, 70, 29, 0.75);
+    }
+    #top > div {
+        position: relative;
+    }
+    .left {
+        width: 55%;
+    }
+    .right {
+        width: 35%;
+    }
+    #top h1 {
+        font-size: 4em;
+        color: white;
+    }
+    #top p {
+        color: white;
+        font-size: 1.7em;
+    }
+    .button {
+        width: 300px;
+    }
+</style>
