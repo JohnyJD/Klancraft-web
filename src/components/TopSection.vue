@@ -9,13 +9,15 @@
         </div>
         <div class="right"></div>
     </div>
+    <div style="position: relative;"><Splitter/></div>
 </template>
 
 <script>
 import ButtonVue from "./Buttons/Button.vue"
+import Splitter from "./SectionSplitter.vue"
 export default {
     components: {
-        ButtonVue
+        ButtonVue,Splitter
     }
 }
 </script>
@@ -33,6 +35,7 @@ export default {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        z-index: 3;
     }
     #top:before {
         position: absolute;

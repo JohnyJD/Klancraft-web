@@ -19,17 +19,15 @@ export default {
         align-items: center;
     }
     .item > div:nth-child(1) {
-        width: auto;
+        width: 60px;
     }
     .item > div:nth-child(2) {
+        position: relative;
         width: 30%;
     } 
     .item > div:nth-child(3) {
         width: 60%;
     } 
-    .item > div:nth-child(2) {
-        position: relative;
-    }
     .item > div:nth-child(2)::before {
         position: absolute;
         content: "";
@@ -46,7 +44,6 @@ export default {
         color: #14461d;
     }
     .item p {
-        font-family: 'Source Sans Pro', sans-serif;
         font-size: 1.2em;
     }
 </style>

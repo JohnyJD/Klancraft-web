@@ -1,22 +1,22 @@
 <template>
     <div id="joinus">
         <div class="join-wrapper">
-            <h2>CHCEŠ SA K NÁM <span class="greenish">PRIDAŤ</span> ?</h2>
+            <h2 class="main-header-h2">CHCEŠ SA K NÁM <span class="greenish">PRIDAŤ</span> ?</h2>
             <div class="join-list">
                 <div class="join-item">
                     <h3>STREAMER</h3>
-                    <NumberItem tag="01" text="Vyplň a pošli kontaktný formulár"/>
-                    <NumberItem tag="02" text="Dohodneme si pohovor"/>
-                    <NumberItem tag="03" text="Následne sa s tebou spojíme a dohodneme spoluprácu"/>
+                    <NumberItem tag="01" text="Stotožniť sa s pravidlami serveru"/>
+                    <NumberItem tag="02" text="Vyplniť formulár"/>
+                    <NumberItem tag="03" text="Prejsť osobným pohovorom"/>
                     <div class="button">
                         <Button buttonText="HRAŤ AKO STREAMER"/>
                     </div>
                 </div>
                 <div class="join-item">
                     <h3>HRÁČ</h3>
-                    <NumberItem tag="01" text="Vyplň a pošli kontaktný formulár"/>
-                    <NumberItem tag="02" text="Dohodneme si pohovor"/>
-                    <NumberItem tag="03" text="Následne sa s tebou spojíme a dohodneme spoluprácu"/>
+                    <NumberItem tag="01" text="Patriť do komunity jedného zo streamerov"/>
+                    <NumberItem tag="02" text="Vybav si u neho vstupenku"/>
+                    <NumberItem tag="03" text="Vypísať formulár"/>
                     <div class="button">
                         <Button buttonText="HRAŤ AKO HRÁČ"/>
                     </div>
@@ -42,29 +42,13 @@ export default {
 
 <style scoped>
     #joinus {
-        margin: 200px 0;
+        margin: var(--main-margin-size);
         position: relative;
         display: flex;
         justify-content: end;
         flex-wrap: wrap;
     }
-    #joinus h2 {
-        position: relative;
-        width: 100%;
-        font-size: 3.5em;
-        text-align: center;
-    }
-    #joinus h2::before {
-        position: absolute;
-        content: "";
-        bottom: -20px;
-        left: 50%;
-        width: 300px;
-        height: 3px;
-        background: #14461d;
-        transform: translateX(-50%);
-    }
-
+    
     .join-wrapper {
         width: 80%;
     }
@@ -92,6 +76,7 @@ export default {
         width: 15%;
         height: 100%;
         background: #14461d;
+        filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
     }
     .background img {
         position: relative;

@@ -1,6 +1,6 @@
 <template>
     <div id="contact-us">
-        <h2>POVEDZ NÁM NIEČO <span class="greenish">O SEBE</span></h2>
+        <h2 class="main-header-h2">POVEDZ NÁM NIEČO <span class="greenish">O SEBE</span></h2>
         <div class="contact-wrapper">
             <div class="form-wrapper">
                 <ContactForm/>
@@ -17,23 +17,9 @@ import ContactForm from './Forms/ContactForm.vue'
 </script>
 
 <style scoped>
-    #contact-us h2 {
-        position: relative;
-        width: 100%;
-        font-size: 3.5em;
-        text-align: center;
+    #contact-us {
+        margin: var(--main-margin-size);
     }
-    #contact-us h2::before {
-        position: absolute;
-        content: "";
-        bottom: -20px;
-        left: 50%;
-        width: 300px;
-        height: 3px;
-        background: #14461d;
-        transform: translateX(-50%);
-    }
-
     .contact-wrapper {
         width: 90%;
         margin: auto;

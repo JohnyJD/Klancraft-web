@@ -1,7 +1,7 @@
 <template>
     <div class="controlls-wrapper">
-        <div class="control" v-for="(dat, id) in data" :key="dat.id">
-            <div :class="{active : activeLink[id]}" @click="changeId(dat.id)">
+        <div class="control" :class="{active : activeLink[id]}" v-for="(dat, id) in data" :key="dat.id">
+            <div @click="changeId(dat.id)">
                 <img :src="getImgPath(dat.imgPath)" alt="">
             </div>   
         </div>
@@ -43,23 +43,27 @@ export default {
     }
     .control {
         width: 40px;
-        height: auto;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
         margin: 0 10px;
-    }
-    .control > div {
-        opacity: 0.7;
         transform: scale(1);
         transform-origin: bottom center;
         cursor: pointer;
         transition: 500ms;
+        opacity: 0.5;
     }
-    .control > div.active {
+    .control > div {
+        
+        height: 100%;
+    }
+    .control.active {
         opacity: 1;
         transform: scale(1.8);
     }
 
     .control img {
-        width: 90%;
+        width: 100%;
         height: auto;
     }
 </style>

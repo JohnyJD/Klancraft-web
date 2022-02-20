@@ -1,6 +1,6 @@
 <template>
     <div id="our-team">
-        <h2>SPOZNAJ NÁŠ <span class="greenish">TÍM</span></h2>
+        <h2 class="main-header-h2">SPOZNAJ NÁŠ <span class="greenish">TÍM</span></h2>
         <div class="team-list">
             <div>
                 <team-item :data="teamData[0]" />
@@ -31,23 +31,7 @@ export default {
 
 <style scoped>
     #our-team {
-        margin: 100px 0;
-    }
-    #our-team h2 {
-        position: relative;
-        width: 100%;
-        font-size: 3.5em;
-        text-align: center;
-    }
-    #our-team h2::before {
-        position: absolute;
-        content: "";
-        bottom: -20px;
-        left: 50%;
-        width: 300px;
-        height: 3px;
-        background: #14461d;
-        transform: translateX(-50%);
+        margin: var(--main-margin-size);
     }
 
     .team-list {

@@ -1,5 +1,4 @@
 <template>
-    <Splitter/>
     <div id="about">
         <div class="about-wrapper">
             <div class="left">
@@ -15,14 +14,11 @@
     </div>    
 </template>
 
-<script setup>
-import Splitter from "./SectionSplitter.vue"
-</script>
 
 <style scoped>
     #about {
         position: relative;
-        margin: 200px 0;
+        margin: var(--main-margin-size);
     }
     .about-wrapper {
         width: 100%;
@@ -32,7 +28,7 @@ import Splitter from "./SectionSplitter.vue"
         align-items: center;
     }
     .about-wrapper > div {
-        width: 45%;
+        width: 40%;
         position: relative;
     }
     .left h2 {
@@ -41,8 +37,6 @@ import Splitter from "./SectionSplitter.vue"
     }
     .left p {
         font-size: 1.4em;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 100;
     }
     .left::before, .left::after {
         position: absolute;
@@ -52,11 +46,11 @@ import Splitter from "./SectionSplitter.vue"
         background: #14461d;
     }
     .left::before {
-        top: -20px;
+        top: -10px;
         left: -30px;
     }
     .left::after {
-        bottom: -20px;
+        bottom: -10px;
         right: -30px;
     }
     .right img {
@@ -70,6 +64,6 @@ import Splitter from "./SectionSplitter.vue"
         width: 20%;
         height: 100%;
         background: #14461d;
-
+        filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
     }
 </style>

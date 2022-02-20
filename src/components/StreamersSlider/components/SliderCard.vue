@@ -1,26 +1,28 @@
 <template>
-    <div v-if="data" class="stream-card">
-        <div class="top">
-            <div class="streamer-logo">
-                <img :src="getImgPath(data.imgPath)" alt="">
+    <div class="slider-data">
+        <div v-if="data" class="stream-card">
+            <div class="top">
+                <div class="streamer-logo">
+                    <img :src="getImgPath(data.imgPath)" alt="">
+                </div>
+                <div class="streamer-name">
+                    <div>
+                        <p>{{data.desc}}</p>
+                        <h3>{{data.nick}}</h3> 
+                    </div> 
+                </div>
             </div>
-            <div class="streamer-name">
-                <div>
-                    <p>{{data.desc}}</p>
-                    <h3>{{data.nick}}</h3> 
-                </div> 
+            <div class="info">
+                <div><p>{{data.text}}</p></div>
             </div>
+            <div class="links">
+                <FacebookSvg/>
+                <InstagramSvg/>
+                <TikTokSvg/>
+                <TwitchSvg/>
+            </div>
+            
         </div>
-        <div class="info">
-            <p>{{data.text}}</p>
-        </div>
-        <div class="links">
-            <FacebookSvg/>
-            <InstagramSvg/>
-            <TikTokSvg/>
-            <TwitchSvg/>
-        </div>
-        
     </div>
     
 </template>
@@ -45,17 +47,45 @@ export default {
 </script>
 
 <style scoped>
+    .slider-data {
+        position: relative;
+    }
+    .slider-data::after, .slider-data::before {
+        position: absolute;
+        content: "";
+        width: 100px;
+        height: 200px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--main-green-light);
+        z-index: 1;
+    }
+    .slider-data::after {
+        clip-path: polygon(0 0, 0% 100%, 100% 50%);
+        left: 0;
+    }
+    .slider-data::before {
+        clip-path: polygon(100% 0, 0 50%, 100% 100%);
+        right: 0;
+    }
     .stream-card {
+        position: relative;
         width: 80%;
-        min-height: 400px;
+        min-height: 450px;
+        max-width: 1000px;
         display: grid;
         grid-template-rows: 30% auto 20%;
         background: #5C9239;
+        background-image: url('@/assets/twitch-dark.svg');
+        background-position: 20% center;
+        background-repeat: no-repeat;
+        background-size: auto 80%;
         margin: auto;
         padding: 20px;
         box-sizing: border-box;
         border-left: 30px solid #1E5121;
         border-right: 30px solid #1E5121;
+        z-index: 2;
     }
     .stream-card > div {
         justify-self: stretch;
@@ -73,12 +103,18 @@ export default {
     .top h3 {
         font-size: 3em;
     }
+    .top p {
+        font-size: 1.3em;
+    }
     .top > .streamer-logo {
-        width: 100px;
+        width: 120px;
         padding-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .top > .streamer-name {
-        flex:n1;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -93,9 +129,29 @@ export default {
     }
 
     .info {
-        padding: 20px 0;
+        padding: 50px;
         grid-row-start: 2;
         grid-row-end: 2;
+    }
+    .info > div {
+        position: relative;
+        font-size: 1.3em;
+    }
+    .info > div::after, .info > div::before {
+        position: absolute;
+        font-size: 4em;
+        color: white;
+        font-family: 'Rowdies', cursive;
+    }
+    .info > div::after {
+        content: '”';
+        top: -40px;
+        left: -40px;
+    }
+    .info > div::before {
+        content: '„';
+        right: -40px;
+        bottom: -40px;
     }
     .links {
         display: flex;
