@@ -1,6 +1,6 @@
 <template>
     <div id="streamers">
-        <div>
+        <div style="position: relative; top: 100px;">
            <Splitter :flip="true"/>
         </div>
         
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div style="position: relative; top: -1px;">
+        <div style="position: relative; top: -100px;">
             <Splitter/>
         </div>
         
@@ -40,12 +40,16 @@ import Button from './Buttons/Button.vue'
     .streamers-wrapper {
         position: relative;
         background: #14461D;
+        background: radial-gradient(#436d28, var(--main-green-dark));
+        /*background: linear-gradient(var(--main-green-light), var(--main-green-dark));*/
         z-index: 3;
-        background-image: url('@/assets/twitch-background.png');
+        /*background-image: url('@/assets/twitch-background.png');
         background-position: center;
-        background-size: 60%;
-        background-repeat: no-repeat;
-        padding: 100px 0;
+        background-size: 800px auto;
+        background-repeat: no-repeat;*/
+        clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%);
+
+        padding: 200px 0;
     }
     .streamers-wrapper * {
         margin: 0;
@@ -74,7 +78,7 @@ import Button from './Buttons/Button.vue'
         width: 90%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
     .streamers-flex svg {
         width: 100%;
@@ -82,14 +86,18 @@ import Button from './Buttons/Button.vue'
     }
 
     .join {
-        margin-top: 100px;
+        margin-top: 150px;
         display: flex;
         justify-content: center;
     }
-    .join > div:first-child {
-        width: 60%;
+    .join h2 {
+        width: 100%;
     }
-    .join > .button {
-        width: 25%;
+    .join > div:first-child {
+        width: auto;
+        margin-right: 8vw;
+    }
+    .join > div.button {
+        min-width: 250px;
     }
 </style>

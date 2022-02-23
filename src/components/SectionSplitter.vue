@@ -22,7 +22,7 @@ export default {
     .dark-part,.bright-part-wrapper  {
         top: 0;
         width: 100%;
-        height: 60px;
+        height: 100px;
     }
     .dark-part-wrapper {
         position: relative;
@@ -42,7 +42,7 @@ export default {
     .bright-part {
         position: relative;
         width: 100%;
-        height: 60px;
+        height: 100px;
         background: #5C9239;
         clip-path: polygon(100% 0, 0 0, 100% 100%);
     }

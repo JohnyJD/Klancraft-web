@@ -32,6 +32,26 @@ export default {
 <style scoped>
     #our-team {
         margin: var(--main-margin-size);
+        position: relative;
+        overflow: hidden;
+    }
+    #our-team::before, #our-team::after {
+        position: absolute;
+        content: "";
+        width: 15%;
+        max-width: 200px;
+        height: 200px;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        transform-origin: center center;
+        background: var(--main-green-dark);
+        
+    }
+    #our-team::before {
+        left: -100px;
+    }
+    #our-team::after {
+        right: -100px;
     }
 
     .team-list {

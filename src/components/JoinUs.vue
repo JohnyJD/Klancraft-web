@@ -23,10 +23,13 @@
                 </div>
             </div>
         </div>
-        
-        <div class="background">
+        <div class="background left">
             <img src="@/assets/grassBlock.png" alt="">
         </div>
+        <div class="background right">
+            <img src="@/assets/grassBlock.png" alt="">
+        </div>
+
     </div>
 </template>
 
@@ -45,8 +48,9 @@ export default {
         margin: var(--main-margin-size);
         position: relative;
         display: flex;
-        justify-content: end;
+        justify-content: center;
         flex-wrap: wrap;
+        overflow: hidden;
     }
     
     .join-wrapper {
@@ -71,17 +75,20 @@ export default {
         display: flex;
         justify-content: end;
         align-items: center;
-        top: 0;
-        left: 0;
-        width: 15%;
-        height: 100%;
-        background: #14461d;
-        filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
+        width: 400px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .background.left {
+        left: -250px;
+    }
+    .background.right {
+        right: -250px;
+        transform: translateY(-50%);
     }
     .background img {
         position: relative;
-        width: 300px;
-        left: 100px;
+        width: 100%;
     }
     .button {
         width: 100%;

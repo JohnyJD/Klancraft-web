@@ -1,18 +1,19 @@
 <template>
-    <div class="custom-select" tabindex="0">
+    <div class="custom-select" :class="{error : error && error.length > 0}" tabindex="0">
         <div class="selected" :class="{open : open}" @click="open = !open">{{selected}}</div>
         <div class="items" :class="{selectHide : !open}">
             <div class="item" v-for="(item, id) in items" :key="id" @click="itemSelected(item)">
                 {{item}}
             </div>
         </div>
+        <div v-if="error && error.length > 0" class="error-msg"><p>{{error}}</p></div>
     </div>
 </template>
 
 <script>
 import {ref} from 'vue'
 export default {
-    props: ['items', 'value', 'emitType'],
+    props: ['items', 'value', 'error', 'emitType'],
     emits: ['itemSelected'],
     setup(props, context) {
         const selected = ref('');
@@ -29,7 +30,7 @@ export default {
             this.selected = this.value;
         }
         else {
-            this.selected = "VYBER SI STREAMERA";
+            this.selected = "VYBER SI STREAMERA *";
         }
         
     }
@@ -45,6 +46,9 @@ export default {
         height: 47px;
         line-height: 47px;
         font-family: 'Source Sans Pro', sans-serif;
+        margin-bottom: 15px;
+        border: 1px solid #a1db7c;
+        transition: 300ms;
     }
 
     .custom-select .selected {
@@ -53,6 +57,7 @@ export default {
         padding-left: 1em;
         cursor: pointer;
         user-select: none;
+        transition: inherit;
     }
     .custom-select .selected.open {
         background-color: #517A32;
@@ -93,5 +98,25 @@ export default {
 
     .selectHide {
         display: none;
+    }
+
+    .custom-select.error {
+        border: 1px solid red;
+    }
+    .custom-select.error .selected {
+        background: rgb(255, 203, 203) !important;
+        color: red;
+    }
+    .error-msg {
+        position: absolute;
+        bottom: -22px;
+        height: 20px;
+        left: 0;
+    }
+    .error-msg p {
+        color: red;
+        font-size: 0.9em;
+        line-height: 20px;
+        margin: 0;  
     }
 </style>

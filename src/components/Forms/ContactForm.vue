@@ -3,31 +3,42 @@
         <button class="button-form light" :class="{active : isStreamerForm}" @click="changeForm(true)">Streamer</button>
         <button class="button-form light" :class="{active : !isStreamerForm}" @click="changeForm(false)">Hráč</button>
     </div>
-    <div class="form">
-        <div><Input name="name" text="KRSTNÉ MENO" :value="formData['name']" @inputChanged="inputChanged" emitType="0" :error="validationErrors.name" /></div> 
-        <div><Input name="email" text="EMAIL" :value="formData['email']" @inputChanged="inputChanged" emitType="0" :error="validationErrors.email" /></div> 
-        <div><Input name="nick_minecraft" text="NICK MINECRAFT" :value="formData['nick_minecraft']" @inputChanged="inputChanged" emitType="0" :error="validationErrors.nick_minecraft" /></div> 
-        <div><Input name="nick_discord" text="NICK DISCORD" :value="formData['nick_discord']" @inputChanged="inputChanged" emitType="0" :error="validationErrors.nick_discord" /></div> 
+    <form class="form" @submit.prevent="onSubmit">
+        <div><Input name="name" text="KRSTNÉ MENO *" :value="formData['name']" @inputChanged="inputChanged" emitType="0" :error="v$.name.$errors.length > 0 ? v$.name.$errors[0].$message : ''"/></div> 
+        <div><Input name="email" text="EMAIL *" :value="formData['email']" @inputChanged="inputChanged" emitType="0" :error="v$.email.$errors.length > 0 ? v$.email.$errors[0].$message : ''" /></div> 
+        <div><Input name="nick_minecraft" text="NICK MINECRAFT *" :value="formData['nick_minecraft']" @inputChanged="inputChanged" emitType="0" :error="v$.nick_minecraft.$errors.length > 0 ? v$.nick_minecraft.$errors[0].$message : ''" /></div> 
+        <div><Input name="nick_discord" text="NICK DISCORD *" :value="formData['nick_discord']" @inputChanged="inputChanged" emitType="0" :error="v$.nick_discord.$errors.length > 0 ? v$.nick_discord.$errors[0].$message : ''" /></div> 
         <div class="form full-width" v-if="isStreamerForm">
-            <div><Input name="twitchLink" text="LINK NA TWITCH" :value="streamerData['twitchLink']" @inputChanged="inputChanged" emitType="1" :error="validationErrors.name" /></div> 
-            <div><Input name="socialLink" text="LINK NA SOCIALNÚ SIEŤ" :value="streamerData['socialLink']" @inputChanged="inputChanged" emitType="1" :error="validationErrors.name" /></div> 
+            <div><Input nick_discord="twitchLink" text="LINK NA TWITCH *" :value="streamerData['twitchLink']" @inputChanged="inputChanged" emitType="1" :error="v2$.twitchLink.$errors.length > 0 ? v2$.twitchLink.$errors[0].$message : ''" /></div> 
+            <div><Input name="socialLink" text="LINK NA SOCIALNÚ SIEŤ *" :value="streamerData['socialLink']" @inputChanged="inputChanged" emitType="1" :error="v2$.socialLink.$errors.length > 0 ? v2$.socialLink.$errors[0].$message : ''" /></div> 
             <div class="full-width social" v-for="(field, id) in socialLinksData" :key="id">
-                <Input :name="field.name" text="LINK NA SOCIALNÚ SIEŤ" :value="field.value" @inputChanged="inputChanged" emitType="1" :error="validationErrors.name" />
-                <div class="remove"><button class="button-form" @click="removeLink(id)">X</button></div>
+                <Input :name="field.name" text="LINK NA SOCIALNÚ SIEŤ *" :value="field.value" @inputChanged="inputChanged" emitType="1" error="" />
+                <div class="remove"><div class="button-form" @click="removeLink(id)">X</div></div>
             </div> 
-            <div class="full-width" v-if="socialLinksData.length < 4"><button class="button-form" @click="addLink">Pridať link</button></div>
-            <div class="full-width"><Input name="aboutStream" text="OPÍŠ NÁM TVOJ STREAM" :value="streamerData['aboutStream']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="validationErrors.aboutStream" /></div>
-            <div class="full-width"><Input name="goals" text="AKÝ JE TVOJ CIEĽ V STREAMOVANÍ ?" :value="streamerData['goals']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="validationErrors.goals" /></div>
-            <div class="full-width"><Input name="whyMe" text="PREČO SA CHCEŠ K NÁM PRIDAŤ ?" :value="streamerData['whyMe']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="validationErrors.whyMe" /></div>
+            <div class="full-width" v-if="socialLinksData.length < 4"><div class="button-form" @click="addLink">Pridať link</div></div>
+            <div class="full-width"><Input name="aboutStream" text="OPÍŠ NÁM TVOJ STREAM *" :value="streamerData['aboutStream']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="v2$.aboutStream.$errors.length > 0 ? v2$.aboutStream.$errors[0].$message : ''" /></div>
+            <div class="full-width"><Input name="goals" text="AKÝ JE TVOJ CIEĽ V STREAMOVANÍ ? *" :value="streamerData['goals']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="v2$.goals.$errors.length > 0 ? v2$.goals.$errors[0].$message : ''" /></div>
+            <div class="full-width"><Input name="whyMe" text="PREČO SA CHCEŠ K NÁM PRIDAŤ ? *" :value="streamerData['whyMe']" :isTextArea="true" emitType="1" @inputChanged="inputChanged" :error="v2$.whyMe.$errors.length > 0 ? v2$.whyMe.$errors[0].$message : ''" /></div>
         </div>
         <div class="form full-width" v-else>
             <div class="full-width">
-                <Select :items="['Idepatooo', 'Annie', 'Kodo', 'Rider TDI']" :value="playerData['fromStreamer']" emitType="2" @itemSelected="itemSelected"/>
+                <Select :items="['Idepatooo', 'Annie', 'Kodo', 'Rider TDI']" :value="playerData['fromStreamer']" :error="v3$.fromStreamer.$errors.length > 0 ? v3$.fromStreamer.$errors[0].$message : ''" emitType="2" @itemSelected="itemSelected"/>
             </div>
-            <div class="full-width"><Input name="aboutMe" text="POVEDZ NÁM NIEČO O SEBE" :value="playerData['aboutMe']" :isTextArea="true" emitType="2" @inputChanged="inputChanged" :error="validationErrors.aboutme" /></div>
+            <div class="full-width"><Input name="aboutMe" text="POVEDZ NÁM NIEČO O SEBE *" :value="playerData['aboutMe']" :isTextArea="true" emitType="2" @inputChanged="inputChanged" :error="v3$.aboutMe.$errors.length > 0 ? v3$.aboutMe.$errors[0].$message : ''" /></div>
         </div> 
-        <div class="button full-width"><Button buttonText="ODOSLAŤ" @buttonClick="formSubmit"/></div>
-    </div>
+        <div class="button full-width"><Button buttonText="ODOSLAŤ"/></div>
+    </form>
+        <!---->
+        <p
+        v-for="error of v$.$errors"
+        :key="error.$uid"
+        >
+        <strong>{{ error.$validator }}</strong>
+        <small> on property</small>
+        <strong>{{ error.$property }}</strong>
+        <small> says:</small>
+        <strong>{{ error.$message }}</strong>
+        </p>
 </template>
 
 <script>
@@ -36,6 +47,9 @@ import Select from './Select.vue'
 import Button from '../Buttons/Button.vue'
 
 import {reactive, ref} from 'vue'
+import useVuelidate from '@vuelidate/core'
+import {required, email, helpers} from '@vuelidate/validators'
+import { load } from 'recaptcha-v3'
 
 export default {
     components: {
@@ -46,22 +60,22 @@ export default {
         var streamerData = reactive({'twitchLink' : '', 'socialLink' : '', 'aboutStream' : '', 'goals' : '', 'whyMe': ''});
         var playerData = reactive({'fromStreamer': '', 'aboutMe': ''});
         var socialLinksData = ref([]);
-        var validationErrors = reactive({'name' : '', 'email' : '', 'nick_minecraft' : '', 'nick_discord' : ''});
         var isStreamerForm = ref(false);
+        const errorMessageRequired = ref("Toto pole je povinné");
+        const errorMessageEmail = ref("Nesprávny formát emailu");
+        const recaptcha = ref('');
         
 
         function inputChanged(value) {
             console.log('Emited new value : ' + value.name);
             switch (value.type) {
                 case '0':
-                    if(validationErrors[value.name].length > 0) {
-                        validationErrors[value.name] = "";
-                    }
+                    
                     formData[value.name] = value.data;
                     break;
                 case '1':
+                    
                     if(value.name.includes('socialLinkAdd')) {
-                        console.log('Social link add');
                         var item = socialLinksData.value.find((item) => {return item.name === value.name});
                         item.value = value.data;
                     }
@@ -70,27 +84,41 @@ export default {
                     }     
                     break;
                 case '2':
+                    
                     playerData[value.name] = value.data;
                     break;
             }
         }
-        function formSubmit() {
-            for(const [key, data] of Object.entries(formData)) {
-                if(data.length == 0) {
-                    validationErrors[key] = `${key} je povinné`;
+        async function onSubmit() {
+            const isFormCorrect = await this.v$.$validate()
+            if(isStreamerForm.value == true ) {
+                const isFormCorrect2 = await this.v2$.$validate()
+                
+                if(isFormCorrect && isFormCorrect2) {
+                    /*const recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
+                    const token = await recaptcha.execute('submit')*/
+
+                    console.log("Token : " + token) // Will also print the token
+                    console.log('Form submit - streamer');
+
                 }
                 else {
-                    if(validationErrors[key].length > 0) {
-                        validationErrors[key] = "";
-                    }
+                    
+                    console.log('Form submit - streamer - INCORECT');
                 }
-                console.log(`${key} - ${data}`);
-            }
-            if(isStreamerForm.value == true ) {
-                console.log('Form submit - streamer');
             }
             else {
-                console.log('Form submit - hrac');
+                const isFormCorrect3 = await this.v3$.$validate()
+                if(isFormCorrect && isFormCorrect3) {
+                    const recaptcha = await load('6LcMTZUeAAAAAJBFGe-SjJKe60EXrstNgb2xA8Wf')
+                    const token = await recaptcha.execute('submit')
+
+                    console.log("Token: " + token) // Will also print the token
+                    console.log('Form submit - HRAC');
+                }
+                else {
+                    console.log('Form submit - HRAC - INCORECT');
+                }
             }
         }
         function changeForm(value) {
@@ -111,8 +139,27 @@ export default {
                 playerData["fromStreamer"] = value.data;
             }
         }
-        return {inputChanged, formData, streamerData, playerData, formSubmit, validationErrors, isStreamerForm, changeForm, addLink, socialLinksData, removeLink, itemSelected};
+
+        const rules = {
+            name : {required : helpers.withMessage(errorMessageRequired, required)}, email : {required : helpers.withMessage(errorMessageRequired, required), email : helpers.withMessage(errorMessageEmail, email)}, nick_minecraft : {required : helpers.withMessage(errorMessageRequired, required)}, nick_discord : {required : helpers.withMessage(errorMessageRequired, required)}
+        };
+        const rules2 = {
+            twitchLink : {required : helpers.withMessage(errorMessageRequired, required)}, socialLink : {required : helpers.withMessage(errorMessageRequired, required)}, aboutStream : {required: helpers.withMessage(errorMessageRequired, required)}, goals : {required: helpers.withMessage(errorMessageRequired, required)}, whyMe : {required: helpers.withMessage(errorMessageRequired, required)}
+        };
+        const rules3 = {
+            fromStreamer : {required: helpers.withMessage(errorMessageRequired, required)}, aboutMe : {required: helpers.withMessage(errorMessageRequired, required)}
+        };
+
+        const v$ = useVuelidate(rules, formData)
+        const v2$ = useVuelidate(rules2, streamerData)
+        const v3$ = useVuelidate(rules3, playerData)
+
+        return {inputChanged, formData, streamerData, playerData, onSubmit, isStreamerForm, changeForm, addLink, socialLinksData, removeLink, itemSelected, v$, v2$, v3$};
     },
+    async mounted() {
+        //this.recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
+    }
+
 }
 </script>
 
@@ -122,6 +169,7 @@ export default {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        margin-top: 15px;
     }
     .form > div {
         width: 45%;
@@ -168,7 +216,7 @@ export default {
         right: 20px;
         transform: translateY(-50%);
     }
-    .remove button {
+    .remove div {
         width: auto;
         color: black;
         transform-origin: center center;

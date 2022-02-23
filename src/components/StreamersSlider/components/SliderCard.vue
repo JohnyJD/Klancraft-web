@@ -20,6 +20,7 @@
                 <InstagramSvg/>
                 <TikTokSvg/>
                 <TwitchSvg/>
+                <YoutubeSvg/>
             </div>
             
         </div>
@@ -32,13 +33,14 @@ import FacebookSvg from '@/components/logos/FacebookSvg.vue'
 import InstagramSvg from '@/components/logos/InstagramSvg.vue'
 import TikTokSvg from '@/components/logos/TikTokSvg.vue'
 import TwitchSvg from '@/components/logos/TwitchSvg.vue'
+import YoutubeSvg from '@/components/logos/YoutubeSvg.vue'
 
 import getImgPath from '@/imgPath'
 
 export default {
     props: ['data'],
     components: {
-        FacebookSvg, InstagramSvg, TikTokSvg, TwitchSvg
+        FacebookSvg, InstagramSvg, TikTokSvg, TwitchSvg, YoutubeSvg
     },
     setup() {
         return {getImgPath}
@@ -81,7 +83,7 @@ export default {
         background-repeat: no-repeat;
         background-size: auto 80%;
         margin: auto;
-        padding: 20px;
+        padding: 50px 20px;
         box-sizing: border-box;
         border-left: 30px solid #1E5121;
         border-right: 30px solid #1E5121;

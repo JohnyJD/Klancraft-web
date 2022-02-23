@@ -59,11 +59,12 @@
     #about::before {
         position: absolute;
         content: "";
-        top: 0;
+        top: 50%;
         right: 0;
         width: 20%;
-        height: 100%;
+        height: 130%;
         background: #14461d;
+        transform: translateY(-50%);
         filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
     }
 </style>

@@ -18,24 +18,37 @@ import ContactForm from './Forms/ContactForm.vue'
 
 <style scoped>
     #contact-us {
+        position: relative;
         margin: var(--main-margin-size);
     }
+    /*#contact-us::before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        right: 0;
+        width: 15%;
+        height: 500px;
+        transform: translateY(-50%);
+        background: var(--main-green-dark);
+    }*/
     .contact-wrapper {
-        width: 90%;
+        width: 80%;
         margin: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
     .form-wrapper {
-        width: 60%;
+        width: 100%;
     }
     .right {
+        display: none;;
+        position: relative;
         width: 35%;
         text-align: right;
     }
     .right img {
-        width: 80%;
+        width: 60%;
         height: auto;
     }
 </style>

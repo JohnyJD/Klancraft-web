@@ -7,25 +7,22 @@
                 <ButtonVue buttonText="VSTÚPIŤ"/>
             </div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+            <video src="@/assets/KC_logo_animated.mp4" autoplay controls></video>
+        </div>
     </div>
     <div style="position: relative;"><Splitter/></div>
 </template>
 
-<script>
+<script setup>
 import ButtonVue from "./Buttons/Button.vue"
 import Splitter from "./SectionSplitter.vue"
-export default {
-    components: {
-        ButtonVue,Splitter
-    }
-}
 </script>
 
 <style scoped>
     #top {
         position: relative;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         display: flex;
         flex-wrap: wrap;
