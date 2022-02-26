@@ -79,7 +79,7 @@ export default {
         color: #E1FED0;
         overflow: hidden;
         position: absolute;
-        background-color: #517A32;;
+        background-color: #517A32;
         left: 0;
         right: 0;
         z-index: 1;

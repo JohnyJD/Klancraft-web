@@ -21,7 +21,7 @@ export default {
     .btn {
         width: auto;
         overflow: hidden;
-        background: #598F37;
+        background: var(--main-green-light);
         transition: transform 300ms;
     }
     .btn button {
@@ -30,7 +30,7 @@ export default {
         padding: 15px 0px;
         background: transparent;
         text-align: center;
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: var(--main-font-family);
         font-weight: 500;
         font-size: 1.2em;
         color: white;
@@ -65,6 +65,7 @@ export default {
         position: relative;
         z-index: 2;
         margin: 0 !important;
+        color: white !important;
     }
 
     /*.btn:hover button::before {
@@ -81,11 +82,14 @@ export default {
         height: 100%;
         top: 0;
         left: 0;
-        background: #14461D;
+        background: var(--main-green-dark);
         opacity: 0;
         transform: scaleX(0.3);
         transition: 300ms;
         z-index: 1;
+    }
+    .btn.dark button::before {
+        background: var(--main-green-light);
     }
     .btn:hover button::before {
         transform: scaleX(1);
@@ -97,6 +101,6 @@ export default {
 
     
     .btn.dark button {
-        background: #14461D;
+        background: var(--main-green-dark);
     }
 </style>

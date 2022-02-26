@@ -1,5 +1,5 @@
 <template>
-    <div id="support-us">
+    <div id="supportus">
         <h2 class="main-header-h2">PODPOR NÁS A KÚP NÁM <span class="greenish">KÁVU</span></h2>
         <!--<div style="position: relative; top: 1px;"><Splitter :flip="true" :colorFlip="true" :brightNone="true"/></div>-->
         <div class="support-wrapper">
@@ -20,19 +20,21 @@ import Splitter from './SectionSplitter.vue'
 </script>
 
 <style scoped>
-    #support-us {
+    #supportus {
         position: relative;
         margin: var(--main-margin-size);
         padding: 100px 0;
         background: #518431;
         /*clip-path: polygon(0 0, 100% 5%, 100% 100%, 0% 95%);*/
-        color: white;
         overflow: hidden;
+    }
+    #supportus h2 {
+        color: white !important;
     }
     .greenish {
         color: var(--main-green-dark);
     }
-    #support-us::before, #support-us::after {
+    #supportus::before, #supportus::after {
         position: absolute;
         content: "";
         width: 15%;
@@ -45,10 +47,10 @@ import Splitter from './SectionSplitter.vue'
         opacity: 0.1;
         
     }
-    #support-us::before {
+    #supportus::before {
         left: -150px;
     }
-    #support-us::after {
+    #supportus::after {
         right: -150px;
     }
     .support-wrapper {

@@ -67,7 +67,7 @@ export default {
         width: 40%;
     }
     .join-item h3 {
-        font-size: 3em;
+        color: var(--main-green-light);
     }
 
     .background {

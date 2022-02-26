@@ -1,4 +1,5 @@
 <template>
+  <navigation/>
   <top-section/>
   <about-us/>
   <join-us/>
@@ -16,4 +17,5 @@
   import OurTeam from './components/OurTeam.vue'
   import DonateUs from './components/DonateUs.vue'
   import ContactUs from './components/ContactSection.vue'
+  import Navigation from './components/Navigation2.vue'
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button class="button-form light" :class="{active : isStreamerForm}" @click="changeForm(true)">Streamer</button>
-        <button class="button-form light" :class="{active : !isStreamerForm}" @click="changeForm(false)">Hráč</button>
+        <button class="button-form light" :class="{active : isStreamerForm}" @click="changeForm(true)">STREAMER</button>
+        <button class="button-form light" :class="{active : !isStreamerForm}" @click="changeForm(false)">HRÁČ</button>
     </div>
     <form class="form" @submit.prevent="onSubmit">
         <div><Input name="name" text="KRSTNÉ MENO *" :value="formData['name']" @inputChanged="inputChanged" emitType="0" :error="v$.name.$errors.length > 0 ? v$.name.$errors[0].$message : ''"/></div> 
@@ -26,19 +26,8 @@
             </div>
             <div class="full-width"><Input name="aboutMe" text="POVEDZ NÁM NIEČO O SEBE *" :value="playerData['aboutMe']" :isTextArea="true" emitType="2" @inputChanged="inputChanged" :error="v3$.aboutMe.$errors.length > 0 ? v3$.aboutMe.$errors[0].$message : ''" /></div>
         </div> 
-        <div class="button full-width"><Button buttonText="ODOSLAŤ"/></div>
+        <div class="button full-width"><Button :buttonText="isSending"/></div>
     </form>
-        <!---->
-        <p
-        v-for="error of v$.$errors"
-        :key="error.$uid"
-        >
-        <strong>{{ error.$validator }}</strong>
-        <small> on property</small>
-        <strong>{{ error.$property }}</strong>
-        <small> says:</small>
-        <strong>{{ error.$message }}</strong>
-        </p>
 </template>
 
 <script>
@@ -64,6 +53,7 @@ export default {
         const errorMessageRequired = ref("Toto pole je povinné");
         const errorMessageEmail = ref("Nesprávny formát emailu");
         const recaptcha = ref('');
+        const isSending = ref(false);
         
 
         function inputChanged(value) {
@@ -90,13 +80,14 @@ export default {
             }
         }
         async function onSubmit() {
+            isSending.value = true;
             const isFormCorrect = await this.v$.$validate()
             if(isStreamerForm.value == true ) {
                 const isFormCorrect2 = await this.v2$.$validate()
                 
                 if(isFormCorrect && isFormCorrect2) {
-                    /*const recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
-                    const token = await recaptcha.execute('submit')*/
+                    const recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
+                    const token = await recaptcha.execute('submit')
 
                     console.log("Token : " + token) // Will also print the token
                     console.log('Form submit - streamer');
@@ -106,6 +97,7 @@ export default {
                     
                     console.log('Form submit - streamer - INCORECT');
                 }
+                isSending.value = false;
             }
             else {
                 const isFormCorrect3 = await this.v3$.$validate()
@@ -119,6 +111,7 @@ export default {
                 else {
                     console.log('Form submit - HRAC - INCORECT');
                 }
+                isSending.value = false;
             }
         }
         function changeForm(value) {
@@ -154,7 +147,7 @@ export default {
         const v2$ = useVuelidate(rules2, streamerData)
         const v3$ = useVuelidate(rules3, playerData)
 
-        return {inputChanged, formData, streamerData, playerData, onSubmit, isStreamerForm, changeForm, addLink, socialLinksData, removeLink, itemSelected, v$, v2$, v3$};
+        return {inputChanged, formData, streamerData, playerData, onSubmit, isStreamerForm, changeForm, addLink, socialLinksData, removeLink, itemSelected, isSending, v$, v2$, v3$};
     },
     async mounted() {
         //this.recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
@@ -189,7 +182,7 @@ export default {
         border: none;
         color: var(--main-green-dark);
         font-size: 1em;
-        font-family: 'Rowdies', cursive;
+        font-family: var(--main-font-header);
         cursor: pointer;
         transform-origin: bottom center;
         opacity: 1;

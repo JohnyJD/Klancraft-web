@@ -53,12 +53,13 @@ import Splitter from "./SectionSplitter.vue"
         width: 35%;
     }
     #top h1 {
-        font-size: 4em;
+        font-size: 6em;
         color: white;
     }
     #top p {
         color: white;
-        font-size: 1.7em;
+        font-size: 1.5em;
+        margin: 50px 0;
     }
     .button {
         width: 300px;

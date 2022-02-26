@@ -1,5 +1,5 @@
 <template>
-    <div id="contact-us">
+    <div id="contactus">
         <h2 class="main-header-h2">POVEDZ NÁM NIEČO <span class="greenish">O SEBE</span></h2>
         <div class="contact-wrapper">
             <div class="form-wrapper">
@@ -17,11 +17,11 @@ import ContactForm from './Forms/ContactForm.vue'
 </script>
 
 <style scoped>
-    #contact-us {
+    #contactus {
         position: relative;
         margin: var(--main-margin-size);
     }
-    /*#contact-us::before {
+    /*#contactus::before {
         position: absolute;
         content: "";
         top: 50%;
@@ -32,7 +32,7 @@ import ContactForm from './Forms/ContactForm.vue'
         background: var(--main-green-dark);
     }*/
     .contact-wrapper {
-        width: 80%;
+        width: 65%;
         margin: auto;
         display: flex;
         justify-content: space-between;

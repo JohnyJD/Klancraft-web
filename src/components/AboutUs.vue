@@ -35,8 +35,11 @@
         font-size: 3.5em;
         margin-bottom: 50px;
     }
+    .left h2 span {
+        font-size: 1.5em;
+    }
     .left p {
-        font-size: 1.4em;
+        font-size: 1.2em;
     }
     .left::before, .left::after {
         position: absolute;
@@ -46,11 +49,11 @@
         background: #14461d;
     }
     .left::before {
-        top: -10px;
+        top: -50px;
         left: -30px;
     }
     .left::after {
-        bottom: -10px;
+        bottom: -50px;
         right: -30px;
     }
     .right img {

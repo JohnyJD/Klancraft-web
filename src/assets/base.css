@@ -3,6 +3,11 @@
     --main-green-dark: #14461d;
     --main-green-light: #518431;
     --main-margin-size: 20vw auto;
+    --main-font-header: 'Oswald', sans-serif;
+    --main-font-text: 'Nunito', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
@@ -33,7 +38,22 @@ h1,
 h2,
 h3 {
     /*font-family: 'Rowdies', cursive;*/
-    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    color: #222222;
+    font-family: var(--main-font-header);
+}
+h3 {
+    font-size: 2.5em;
+}
+
+p,
+.text {
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    font-family: var(--main-font-text);
+    /*font-family: 'Montserrat', sans-serif;*/
+    /*font-family: 'PT Sans', sans-serif;*/
+    color: #474747;
+    margin: 20px auto;
 }
 
 .main-header-h2 {
@@ -51,18 +71,8 @@ h3 {
     left: 50%;
     width: 300px;
     height: 3px;
-    background: #14461d;
+    background: var(--main-green-dark);
     transform: translateX(-50%);
-}
-
-p,
-.text {
-    /*font-family: 'Source Sans Pro', sans-serif;*/
-    font-family: 'Nunito', sans-serif;
-    /*font-family: 'Montserrat', sans-serif;*/
-    /*font-family: 'PT Sans', sans-serif;*/
-    font-weight: 300;
-    margin: 20px auto;
 }
 
 span.text {
@@ -70,5 +80,5 @@ span.text {
 }
 
 .greenish {
-    color: #598F37;
+    color: var(--main-green-light);
 }

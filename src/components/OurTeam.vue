@@ -1,5 +1,5 @@
 <template>
-    <div id="our-team">
+    <div id="ourteam">
         <h2 class="main-header-h2">SPOZNAJ NÁŠ <span class="greenish">TÍM</span></h2>
         <div class="team-list">
             <div>
@@ -30,12 +30,12 @@ export default {
 </script>
 
 <style scoped>
-    #our-team {
+    #ourteam {
         margin: var(--main-margin-size);
         position: relative;
         overflow: hidden;
     }
-    #our-team::before, #our-team::after {
+    #ourteam::before, #ourteam::after {
         position: absolute;
         content: "";
         width: 15%;
@@ -47,10 +47,10 @@ export default {
         background: var(--main-green-dark);
         
     }
-    #our-team::before {
+    #ourteam::before {
         left: -100px;
     }
-    #our-team::after {
+    #ourteam::after {
         right: -100px;
     }
 

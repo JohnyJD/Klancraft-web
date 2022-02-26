@@ -122,6 +122,9 @@ export default {
         justify-content: flex-start;
         flex-wrap: wrap;
     }
+    .top > .streamer-name p {
+        font-size: 1em;
+    }
     .streamer-name > div {
         width: 100%;
     }
@@ -137,7 +140,7 @@ export default {
     }
     .info > div {
         position: relative;
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
     .info > div::after, .info > div::before {
         position: absolute;

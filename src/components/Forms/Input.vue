@@ -52,8 +52,8 @@ export default {
         background: #E1FED0;
         padding: 15px 20px;
         font-size: 1em;
-        color: #517A32;
-        font-family: 'Source Sans Pro', sans-serif;
+        color: var(--main-green-dark);
+        font-family: var(--main-font-text);
         border: none;
         outline: none;
         box-sizing: border-box;
@@ -63,8 +63,8 @@ export default {
     .input-label, .textarea-label {
         position: absolute;
         font-size: 1em;
-        color: #517A32;
-        font-family: 'Source Sans Pro', sans-serif;
+        color: var(--main-green-light);
+        font-family: var(--main-font-text);
         left: 20px;
         transform: translateY(-50%);
         transition:  300ms;

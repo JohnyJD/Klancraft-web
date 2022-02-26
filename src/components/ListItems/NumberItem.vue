@@ -19,14 +19,15 @@ export default {
         align-items: center;
     }
     .item > div:nth-child(1) {
-        width: 60px;
+        width: 30px;
     }
     .item > div:nth-child(2) {
         position: relative;
-        width: 30%;
+        width: 40px;
+        margin: 0 10px;
     } 
     .item > div:nth-child(3) {
-        width: 60%;
+        flex: 1;
     } 
     .item > div:nth-child(2)::before {
         position: absolute;
@@ -34,14 +35,14 @@ export default {
         top: 50%;
         left: 50%;
         width: 80%;
-        height: 5px;
-        background: #14461d;
+        height: 3px;
+        background: var(--main-green-dark);
         transform: translate(-50%, -50%);
     }
     .item span {
-        font-size: 2.5em;
-        font-family:'Rowdies', cursive;
-        color: #14461d;
+        font-size: 2em;
+        font-family: var(--main-font-header);
+        color: var(--main-green-dark);
     }
     .item p {
         font-size: 1.2em;
