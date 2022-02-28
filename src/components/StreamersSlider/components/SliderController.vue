@@ -2,15 +2,15 @@
     <div class="controlls-wrapper">
         <div class="control" :class="{active : activeLink[id]}" v-for="(dat, id) in data" :key="dat.id">
             <div @click="changeId(dat.id)">
-                <img :src="getImgPath(dat.imgPath)" alt="">
+                <img :src="dat.imgPath" alt="">
             </div>   
         </div>
     </div>
 </template>
 
 <script>
-import {reactive} from 'vue'
-import getImgPath from '@/imgPath'
+import {reactive, ref} from 'vue'
+//import getImgPath from '@/imgPath'
 
 export default {
     props: ['data'],
@@ -18,6 +18,7 @@ export default {
     setup(_, context) {
         var activeLink = reactive([true, false, false]);
         var prevId = 1;
+        var active = ref('')
         function changeId(Id) {
             if(Id !== prevId) {
                 activeLink.splice(Id-1, 1, true);
@@ -29,7 +30,8 @@ export default {
                 context.emit('idChanged', Id);
             }
         }
-        return {getImgPath,changeId, prevId, activeLink}
+        
+        return {changeId, prevId, activeLink, active}
     },
 }
 </script>

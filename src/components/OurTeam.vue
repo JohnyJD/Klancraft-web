@@ -15,17 +15,25 @@
 <script>
 import { ref, computed } from 'vue'
 import TeamItem from './ListItems/TeamItem.vue'
+import getImgPath from '@/imgPath.js'
+
 export default {
   components: { TeamItem },
     setup() {
-        const teamData = ref([{nick: 'Idepatooo', desc: 'Majiteľ', imgPath: '/src/assets/team/Idepato_head.png'}, {nick: 'Crelo_X', desc: 'Hlavný developer', imgPath: '/src/assets/team/Crelo_x_head.png'}, {nick: 'P3p1kSvK', desc: 'Developer', imgPath: '/src/assets/team/p3p1ksvk.png'}, {nick: 'Samdzi', desc: 'Developer', imgPath: '/src/assets/team/samdzi.png'}, {nick: 'Forest_18', desc: 'Developer', imgPath: '/src/assets/team/Forest_18.png'}]);    
+        const teamData = ref([{nick: 'Idepatooo', desc: 'Majiteľ', imgPath: 'Idepato_head'}, {nick: 'Crelo_X', desc: 'Hlavný developer', imgPath: 'Crelo_x_head'}, {nick: 'P3p1kSvK', desc: 'Developer', imgPath: 'p3p1ksvk'}, {nick: 'Samdzi', desc: 'Developer', imgPath: 'samdzi'}, {nick: 'Forest_18', desc: 'Developer', imgPath: 'Forest_18'}]);    
         const getExceptRoot = computed(() => {
             return teamData.value.filter((member, id) => {
                 return id !== 0
             })
         })
-        return {teamData, getExceptRoot}
+        return {teamData, getExceptRoot, getImgPath}
     },
+    async mounted() {
+        for(const el of this.teamData) {
+            const img = await this.getImgPath(el.imgPath, 'team')
+            el.imgPath = img;
+        }
+    }
 }
 </script>
 

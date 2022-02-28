@@ -6,7 +6,9 @@
             <div>
                 <img src="@/assets/Buy_me_a_Coffee_Logo.png" alt="">
                 <div class="button">
-                    <Button buttonText="PODPORIŤ" :dark="true"/>
+                    <a href="https://www.buymeacoffee.com/klancraft" target="blank">
+                        <Button buttonText="PODPORIŤ" :dark="true"/>
+                    </a>
                 </div>
             </div>
         </div>

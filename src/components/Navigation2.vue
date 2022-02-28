@@ -2,6 +2,10 @@
     <nav :class="{hide : !isDark}">
         <div class="nav-wrapper">
             <div class="nav-items">
+                <div class="nav-logo" @click="animateTo('top')">
+                    <svg id="Vrstva_1" data-name="Vrstva 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path class="cls-1" d="M313.42,864.79,246,824.55V364.24l67.43-31V553h63.76V310.94l67.44-32.06V555.5h-32.8v87.06h32.8V932.93L377,898.7l.18-253.63H313.42Z"/><polygon class="cls-2" points="729.21 345.29 729.21 345.29 597.43 289.54 597.43 289.54 563.71 272 563.82 405.27 563.82 405.27 563.82 812.9 564 942.56 596.92 927.73 729.56 876.31 729.56 876.31 761.8 862.28 761.8 812.9 761.8 811.69 761.8 658.27 694.59 658.27 694.59 775.38 631.03 803.98 630.46 403.02 694.59 429.15 694.59 559.9 761.8 559.9 761.8 405.27 761.8 356.29 729.21 345.29"/><polygon class="cls-2" points="535.53 955.28 507.5 972.48 477.76 957.35 477.76 34.04 535.53 34.04 535.53 955.28"/><rect class="cls-2" x="452.48" y="185.34" width="108.32" height="53.64"/><polygon class="cls-2" points="239.45 327.02 452.53 238.99 452.53 185.34 238.94 278.19 239.45 327.02"/><rect class="cls-2" x="452.14" y="33.35" width="108.32" height="53.64" rx="3.77"/><path class="cls-2" d="M758.88,320.56,562.72,239.8a3.09,3.09,0,0,1-1.91-2.86V190.07a3.08,3.08,0,0,1,4.31-2.83l196.61,85.4a3.11,3.11,0,0,1,1.86,2.87l-.45,42.22A3.09,3.09,0,0,1,758.88,320.56Z"/></svg>
+                    <!--<img src="@/assets/KC_logo_dark.png" alt="">-->
+                </div>
                 <div class="nav-item" :class="{active : activeSection == 'about'}" @click="animateTo('about')">O NÁS</div>
                 <div class="nav-item" :class="{active : activeSection == 'joinus'}" @click="animateTo('joinus')">AKO SA PRIDAŤ</div>
                 <div class="nav-item" :class="{active : activeSection == 'streamers'}" @click="animateTo('streamers')">STREAMERI</div>
@@ -9,12 +13,14 @@
                 <div class="nav-item" :class="{active : activeSection == 'supportus'}" @click="animateTo('supportus')">PODPOR NÁS</div>
                 <div class="nav-item" :class="{active : activeSection == 'contactus'}" @click="animateTo('contactus')">FORMULÁR</div>
             </div>
+            
         </div>
     </nav>
 </template>
 
 <script>
 import {ref, reactive} from 'vue'
+import animateToOffset from '@/navigation.js'
 export default {
     setup() {
         const isDark = ref(false);
@@ -74,7 +80,11 @@ export default {
             //if(window.scrollY) { 
         }
         function animateTo(sectionId) {
-            window.scroll(0, scrollingData[sectionId].offset);
+            let offset = 0;
+            if(sectionId != 'top') {
+                offset = scrollingData[sectionId].offset
+            }
+            animateToOffset(offset);
         }
         return {onScroll, onScrolll, animateTo, isDark, scrollingData, activeSection}
     },
@@ -112,6 +122,7 @@ export default {
         right: -200px;
     }
     .nav-wrapper {
+        position: relative;
         width: 95%;
         display: flex;
         justify-content: space-between;
@@ -126,7 +137,7 @@ export default {
     .nav-item {
         width: 100%;
         margin: 10px 0;
-        font-size: 1em;
+        font-size: 1.1em;
         color: rgb(182, 182, 182);
         cursor: pointer;
         transition: 300ms;
@@ -141,7 +152,26 @@ export default {
         opacity: 1;
     }
     .nav-item:hover {
-        color: var(--main-green-light);
         transform: scale(1.2);
+    }
+
+    .nav-logo {
+        position: absolute;
+        top: -70px;
+        right: 0;
+        width: 60px;
+        height: auto;
+        cursor: pointer;
+        transition: transform 300ms;
+    }
+    .nav-logo:hover {
+        transform: scale(1.2);
+    }
+    .nav-logo img {
+        width: 50px;
+        height: auto;
+    }
+    .nav-logo svg {
+        fill: #77c13e !important;
     }
 </style>

@@ -4,7 +4,7 @@
             <div><h1>STAŇ SA AJ TY<br><span class="greenish">KLANCRAFTIANOM</span></h1></div>
             <div><p>Vstúp do skvelej komunity plnej skvelých ľudí<br>Zahraj si po boku stremerov</p></div>
             <div class="button">
-                <ButtonVue buttonText="VSTÚPIŤ"/>
+                <ButtonVue buttonText="VSTÚPIŤ" @buttonClick="animateTo"/>
             </div>
         </div>
         <div class="right">
@@ -14,9 +14,20 @@
     <div style="position: relative;"><Splitter/></div>
 </template>
 
-<script setup>
+<script>
 import ButtonVue from "./Buttons/Button.vue"
 import Splitter from "./SectionSplitter.vue"
+import animateToOffset from '@/navigation.js'
+export default {
+    components: {ButtonVue, Splitter},
+    setup() {
+        function animateTo(val) {
+            let offset = document.getElementById('about').offsetTop;
+            animateToOffset(offset);
+        }
+        return {animateTo}
+    }
+}
 </script>
 
 <style scoped>
@@ -53,7 +64,7 @@ import Splitter from "./SectionSplitter.vue"
         width: 35%;
     }
     #top h1 {
-        font-size: 6em;
+        font-size: 5em;
         color: white;
     }
     #top p {

@@ -35,7 +35,7 @@ import Input from './Input.vue'
 import Select from './Select.vue'
 import Button from '../Buttons/Button.vue'
 
-import {reactive, ref} from 'vue'
+import {reactive, ref, watch} from 'vue'
 import useVuelidate from '@vuelidate/core'
 import {required, email, helpers} from '@vuelidate/validators'
 import { load } from 'recaptcha-v3'
@@ -44,7 +44,8 @@ export default {
     components: {
         Input, Button, Select
     },
-    setup() {
+    props: ['isStreamer'],
+    setup(props) {
         var formData = reactive({'name' : '', 'email' : '', 'nick_minecraft' : '', 'nick_discord' : ''});
         var streamerData = reactive({'twitchLink' : '', 'socialLink' : '', 'aboutStream' : '', 'goals' : '', 'whyMe': ''});
         var playerData = reactive({'fromStreamer': '', 'aboutMe': ''});
@@ -60,11 +61,9 @@ export default {
             console.log('Emited new value : ' + value.name);
             switch (value.type) {
                 case '0':
-                    
                     formData[value.name] = value.data;
                     break;
                 case '1':
-                    
                     if(value.name.includes('socialLinkAdd')) {
                         var item = socialLinksData.value.find((item) => {return item.name === value.name});
                         item.value = value.data;
@@ -133,6 +132,10 @@ export default {
             }
         }
 
+        watch(() => props.isStreamer, (newValue, oldValue ) => {
+            isStreamerForm.value = newValue;
+        })
+
         const rules = {
             name : {required : helpers.withMessage(errorMessageRequired, required)}, email : {required : helpers.withMessage(errorMessageRequired, required), email : helpers.withMessage(errorMessageEmail, email)}, nick_minecraft : {required : helpers.withMessage(errorMessageRequired, required)}, nick_discord : {required : helpers.withMessage(errorMessageRequired, required)}
         };
@@ -152,7 +155,6 @@ export default {
     async mounted() {
         //this.recaptcha = await load('6LfeK5UeAAAAAHkuYXQr5VHixyfjrf1tFaaH-r5c')
     }
-
 }
 </script>
 

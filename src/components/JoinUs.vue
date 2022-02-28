@@ -9,7 +9,7 @@
                     <NumberItem tag="02" text="Vyplniť formulár"/>
                     <NumberItem tag="03" text="Prejsť osobným pohovorom"/>
                     <div class="button">
-                        <Button buttonText="HRAŤ AKO STREAMER"/>
+                        <Button buttonText="HRAŤ AKO STREAMER" @buttonClick="animateTo(true)"/>
                     </div>
                 </div>
                 <div class="join-item">
@@ -18,7 +18,7 @@
                     <NumberItem tag="02" text="Vybav si u neho vstupenku"/>
                     <NumberItem tag="03" text="Vypísať formulár"/>
                     <div class="button">
-                        <Button buttonText="HRAŤ AKO HRÁČ"/>
+                        <Button buttonText="HRAŤ AKO HRÁČ" @buttonClick="animateTo(false)"/>
                     </div>
                 </div>
             </div>
@@ -36,9 +36,20 @@
 <script>
 import Button from "./Buttons/Button.vue"
 import NumberItem from "./ListItems/NumberItem.vue"
+import animateToOffset from '@/navigation.js'
+
 export default {
     components: {
         Button, NumberItem
+    },
+    emits: ['changeForm'],
+    setup(_, context) {
+        function animateTo(isStreamer) {
+            let offset = document.getElementById('contactus').offsetTop;
+            context.emit('changeForm', isStreamer);
+            animateToOffset(offset);
+        }
+        return {animateTo}
     }
 }
 </script>

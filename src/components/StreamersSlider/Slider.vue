@@ -9,28 +9,45 @@
 import { ref, reactive } from 'vue';
 import SliderController from './components/SliderController.vue'
 import SliderCard from './components/SliderCard.vue'
-import StreamersData from '@/assets/data/streamersData.json'
+import streamersData from '@/streamersData.json'
+
+import getImgPath from '@/imgPath.js'
 
 export default {
     components: {
         SliderController, SliderCard
     },
     setup() {
-        const controllerData = ref([{id:1,imgPath: '/src/assets/streamers/idepato.jpg'}, {id: 2, imgPath: '/src/assets/streamers/kodo.jpg'}, {id:3,imgPath: '/src/assets/streamers/ridertdi.jpg'}]);
+        const controllerData = reactive([]);
         const streamers = reactive([])
         var streamerData = reactive({});
-        function idChanged(Id) {
+        async function idChanged(Id) {
             console.log(streamers);
             const dat = streamers.filter((item) => {
                 return item.id === Id;
             });
             Object.assign(streamerData, dat[0]);
         }
-        return {controllerData, idChanged, streamers, streamerData}
+        return {controllerData, idChanged, streamers, streamerData, getImgPath}
     },
-    mounted() {
-        Object.assign(this.streamers, StreamersData)
-        Object.assign(this.streamerData, this.streamers[0])
+    async mounted() {
+        let imgs = {}
+        for(const el of streamersData) {
+            const img = await this.getImgPath(el.imgPath, 'streamers')
+            imgs[el.id] = img
+        }
+        const controler = streamersData.map((value) => {
+            return {
+                id : value.id,
+                imgPath : imgs[value.id]
+            }
+        })
+        Object.assign(this.controllerData, controler)
+        Object.assign(this.streamers, streamersData)
+        for(const el of this.streamers) {
+            el.imgPath = imgs[el.id]
+        }
+        Object.assign(this.streamerData, this.streamers[0])        
     }
 }
 </script>

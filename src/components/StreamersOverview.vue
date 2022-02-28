@@ -13,7 +13,7 @@
                 <stream-slider />
                 <div class="join">
                     <div><h2>PRIDAJ SA DO <span class="greenish">KOMUNITY</span></h2></div>
-                    <div class="button"><Button buttonText="IDEM DO TOHO"/></div>
+                    <div class="button"><Button buttonText="IDEM DO TOHO" @buttonClick="animateTo" /></div>
                 </div>
             </div>
         </div>
@@ -25,10 +25,22 @@
     
 </template>
 
-<script setup>
+<script>
 import Splitter from './SectionSplitter.vue'
 import StreamSlider from './StreamersSlider/Slider.vue'
 import Button from './Buttons/Button.vue'
+import animateToOffset from '@/navigation.js'
+
+export default {
+    components: {Splitter, StreamSlider, Button},
+    setup() {
+        function animateTo(val) {
+            let offset = document.getElementById('contactus').offsetTop;
+            animateToOffset(offset);
+        }
+        return {animateTo}
+    }
+}
 </script>
 
 <style scoped>

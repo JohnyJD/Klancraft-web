@@ -3,12 +3,12 @@
         <div v-if="data" class="stream-card">
             <div class="top">
                 <div class="streamer-logo">
-                    <img :src="getImgPath(data.imgPath)" alt="">
+                    <img :src="data.imgPath" alt="">
                 </div>
                 <div class="streamer-name">
                     <div>
                         <p>{{data.desc}}</p>
-                        <h3>{{data.nick}}</h3> 
+                        <h3>{{data.nick}}</h3>
                     </div> 
                 </div>
             </div>
@@ -16,11 +16,9 @@
                 <div><p>{{data.text}}</p></div>
             </div>
             <div class="links">
-                <FacebookSvg/>
-                <InstagramSvg/>
-                <TikTokSvg/>
-                <TwitchSvg/>
-                <YoutubeSvg/>
+                <div v-for="(link, key) in data.links" :key="key">
+                    <Logo :type="key" :link="link" />
+                </div>
             </div>
             
         </div>
@@ -29,22 +27,13 @@
 </template>
 
 <script>
-import FacebookSvg from '@/components/logos/FacebookSvg.vue'
-import InstagramSvg from '@/components/logos/InstagramSvg.vue'
-import TikTokSvg from '@/components/logos/TikTokSvg.vue'
-import TwitchSvg from '@/components/logos/TwitchSvg.vue'
-import YoutubeSvg from '@/components/logos/YoutubeSvg.vue'
-
-import getImgPath from '@/imgPath'
+import Logo from '@/components/logos/StreamLogo.vue'
 
 export default {
     props: ['data'],
     components: {
-        FacebookSvg, InstagramSvg, TikTokSvg, TwitchSvg, YoutubeSvg
-    },
-    setup() {
-        return {getImgPath}
-    },
+        Logo
+    }
 }
 </script>
 
@@ -165,5 +154,7 @@ export default {
     }
     .links > div {
         padding: 0 10px;
+        display: flex;
+        align-items: center;
     }
 </style>

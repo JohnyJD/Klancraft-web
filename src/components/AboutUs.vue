@@ -32,7 +32,7 @@
         position: relative;
     }
     .left h2 {
-        font-size: 3.5em;
+        font-size: 3em;
         margin-bottom: 50px;
     }
     .left h2 span {
@@ -46,7 +46,7 @@
         content: "";
         width: 40%;
         height: 3px;
-        background: #14461d;
+        background: var(--main-green-dark);
     }
     .left::before {
         top: -50px;
@@ -66,7 +66,7 @@
         right: 0;
         width: 20%;
         height: 130%;
-        background: #14461d;
+        background: var(--main-green-dark);
         transform: translateY(-50%);
         filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
     }

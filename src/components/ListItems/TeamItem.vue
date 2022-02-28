@@ -1,6 +1,6 @@
 <template>
     <div class="team-list-item">
-        <div class="team-img"><img :src="getImgPath(data.imgPath)" alt=""></div>
+        <div class="team-img"><img :src="data.imgPath" alt=""></div>
         <div>
             <h3>{{data.nick}}</h3>
             <span class="greenish text">{{data.desc}}</span>
@@ -10,12 +10,8 @@
 </template>
 
 <script>
-import getImgPath from '@/imgPath.js'
 export default {
-    props: ['data'],
-    setup() {
-        return {getImgPath}
-    }
+    props: ['data']
 }
 </script>
 

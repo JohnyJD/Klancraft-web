@@ -3,7 +3,7 @@
         <h2 class="main-header-h2">POVEDZ NÁM NIEČO <span class="greenish">O SEBE</span></h2>
         <div class="contact-wrapper">
             <div class="form-wrapper">
-                <ContactForm/>
+                <ContactForm :isStreamer="isStreamer"/>
             </div>
             <div class="right">
                 <img src="@/assets/contact-img.png" alt="">
@@ -12,8 +12,12 @@
     </div>
 </template>
 
-<script setup>
+<script>
 import ContactForm from './Forms/ContactForm.vue'
+export default {
+    components : {ContactForm},
+    props: ['isStreamer']
+}
 </script>
 
 <style scoped>
