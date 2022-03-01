@@ -47,4 +47,13 @@ export default {
     .item p {
         font-size: 1.2em;
     }
+
+    @media screen and (max-width: 1024px) {
+        .item p {
+            font-size: 1em;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        
+    }
 </style>

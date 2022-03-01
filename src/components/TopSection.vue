@@ -75,4 +75,26 @@ export default {
     .button {
         width: 300px;
     }
+
+    @media screen and (max-width: 1024px) {
+        #top h1 {
+            font-size: 4em;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #top {
+            height: auto;
+            padding: 100px 0;
+        }
+        .left , .right {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+    }
 </style>

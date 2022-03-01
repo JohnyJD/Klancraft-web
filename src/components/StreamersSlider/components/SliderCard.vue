@@ -157,4 +157,9 @@ export default {
         display: flex;
         align-items: center;
     }
+
+
+    @media screen and (max-width: 768px) {
+        
+    }
 </style>

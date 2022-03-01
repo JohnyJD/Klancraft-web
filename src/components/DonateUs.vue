@@ -43,7 +43,6 @@ import Splitter from './SectionSplitter.vue'
         max-width: 300px;
         height: 300px;
         top: 50%;
-        transform: translateY(-50%) rotate(45deg);
         transform-origin: center center;
         background: var(--main-green-dark);
         opacity: 0.1;
@@ -51,9 +50,11 @@ import Splitter from './SectionSplitter.vue'
     }
     #supportus::before {
         left: -150px;
+        transform: translateY(-50%) rotate(45deg);
     }
     #supportus::after {
         right: -150px;
+        transform: translateY(-50%) rotate(-45deg);
     }
     .support-wrapper {
         position: relative;
@@ -78,5 +79,15 @@ import Splitter from './SectionSplitter.vue'
     .support-wrapper > div {
         width: 80%;
         text-align: center;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .support-wrapper img {
+            width: 60%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        
     }
 </style>

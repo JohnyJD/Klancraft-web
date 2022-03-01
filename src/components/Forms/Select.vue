@@ -119,4 +119,10 @@ export default {
         line-height: 20px;
         margin: 0;  
     }
+
+    @media only screen and (max-width: 768px) {
+        .custom-select .selected, .item {
+            font-size: 0.8em;
+        }
+    }
 </style>

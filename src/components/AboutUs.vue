@@ -70,4 +70,42 @@
         transform: translateY(-50%);
         filter: drop-shadow(0px 0px 10px rgba(13, 44, 0, 0.55));
     }
+
+    @media screen and (max-width: 1024px) {
+        .left h2 {
+            font-size: 2.5em;
+        }
+        .left p {
+            font-size: 1em;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .left h2 {
+            font-size: 2em;
+        }
+        .about-wrapper {
+            flex-direction: column;
+            text-align: justify;
+        }
+        .about-wrapper > div {
+            width: 80%;
+        }
+        .right img {
+            width: 60%;
+        }
+        .right {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        #about::before {
+            display: none;
+        }
+        .left::before {
+            top: -20px;
+        }
+        .left::after {
+            bottom: -20px;
+        }
+    }
 </style>

@@ -112,4 +112,10 @@ export default {
         margin: 0;  
     }
     
+
+    @media only screen and (max-width: 768px) {
+        .input-label, .textarea-label, .input input, .input textarea, .input input:placeholder-shown, .input textarea:placeholder-shown {
+            font-size: 0.8em;
+        }
+    }
 </style>

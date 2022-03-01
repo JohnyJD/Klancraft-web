@@ -55,4 +55,10 @@ export default {
         width: 60%;
         height: auto;
     }
+
+    @media only screen and (max-width: 768px) {
+        .contact-wrapper {
+            width: 80%;
+        }
+    }
 </style>

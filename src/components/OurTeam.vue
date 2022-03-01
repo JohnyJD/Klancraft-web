@@ -50,16 +50,17 @@ export default {
         max-width: 200px;
         height: 200px;
         top: 50%;
-        transform: translateY(-50%) rotate(45deg);
         transform-origin: center center;
         background: var(--main-green-dark);
         
     }
     #ourteam::before {
         left: -100px;
+        transform: translateY(-50%) rotate(45deg);
     }
     #ourteam::after {
         right: -100px;
+        transform: translateY(-50%) rotate(-45deg);
     }
 
     .team-list {
@@ -73,5 +74,13 @@ export default {
         justify-content: center;
         align-items: center;
         width: 100%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        
+    }
+
+    @media screen and (max-width: 768px) {
+        
     }
 </style>

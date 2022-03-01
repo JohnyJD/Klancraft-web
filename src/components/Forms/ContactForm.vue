@@ -216,4 +216,13 @@ export default {
         color: black;
         transform-origin: center center;
     }
+    @media screen and (max-width: 1024px) {
+        .form > div {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        
+    }
 </style>

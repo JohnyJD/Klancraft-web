@@ -112,4 +112,16 @@ export default {
     .join > div.button {
         min-width: 250px;
     }
+
+    @media screen and (max-width: 1024px) {
+        .streamers-flex h2 {
+            font-size: 2em;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .streamers-flex h2 {
+            font-size: 1.8em;
+        }
+    }
 </style>

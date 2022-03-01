@@ -6,6 +6,7 @@
     --main-font-header: 'Oswald', sans-serif;
     --main-font-text: 'Nunito', sans-serif;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -13,11 +14,11 @@ html {
 html::-webkit-scrollbar {
     width: 10px;
 }
- 
+
 html::-webkit-scrollbar-track {
     background-color: #76be49;
 }
- 
+
 html::-webkit-scrollbar-thumb {
     background-color: #1d6b2b;
     border-radius: 100px;
@@ -42,6 +43,7 @@ h3 {
     color: #222222;
     font-family: var(--main-font-header);
 }
+
 h3 {
     font-size: 2.5em;
 }
@@ -81,4 +83,16 @@ span.text {
 
 .greenish {
     color: var(--main-green-light);
+}
+
+@media screen and (max-width: 1024px) {
+    .main-header-h2 {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-header-h2 {
+        font-size: 2.5em;
+    }
 }

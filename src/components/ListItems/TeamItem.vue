@@ -76,5 +76,23 @@ export default {
         top: 0;
         transform: translate(-50%, 0);
     }
+
+    @media screen and (max-width: 1024px) {
+        .team-img {
+            max-width: 100px !important;
+        }
+        .team-list-item h3 {
+            font-size: 1.7em;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .team-img {
+            max-width: 80px !important;
+        }
+        .team-list-item h3 {
+            font-size: 1.5em;
+        }
+    }
     
 </style>

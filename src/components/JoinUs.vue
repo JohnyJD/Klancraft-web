@@ -106,4 +106,22 @@ export default {
         margin: 25px 0;
     }
 
+    @media screen and (max-width: 1024px) {
+        .join-item h3 {
+            font-size: 2em;
+        }
+
+    }
+    @media screen and (max-width: 768px) {
+        .join-list {
+            flex-direction: column;
+        }
+        .join-item {
+            width: 80%;
+        }
+        .background {
+            opacity: 0.2;
+        }
+    }
+
 </style>

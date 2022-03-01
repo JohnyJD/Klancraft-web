@@ -174,4 +174,10 @@ export default {
     .nav-logo svg {
         fill: #77c13e !important;
     }
+
+    @media only screen and (max-width: 768px) {
+        nav {
+            display: none;
+        }
+    }
 </style>
