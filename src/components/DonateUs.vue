@@ -88,6 +88,8 @@ import Splitter from './SectionSplitter.vue'
     }
 
     @media screen and (max-width: 768px) {
-        
+         .support-wrapper {
+             padding: 25px 0;
+         }
     }
 </style>

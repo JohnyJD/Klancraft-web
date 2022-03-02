@@ -103,4 +103,11 @@ export default {
     .btn.dark button {
         background: var(--main-green-dark);
     }
+
+    @media screen and (max-width: 600px) {
+        .btn button {
+            font-size: 0.8em;
+            padding: 10px 0px;
+        }
+    }
 </style>

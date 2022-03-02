@@ -94,5 +94,17 @@ export default {
             font-size: 1.5em;
         }
     }
-    
+    @media screen and (max-width: 600px) {
+        .team-list-item {
+            width: 50%;
+        }
+        .team-list-item:nth-child(odd)::before {
+            width: 50%;
+            left: 100%;
+            transform: translateX(-100%);
+        }
+        .team-list-item:nth-child(even)::before {
+            width: 50%;
+        }
+    }
 </style>

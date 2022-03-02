@@ -26,7 +26,7 @@
             </div>
             <div class="full-width"><Input name="aboutMe" text="POVEDZ NÁM NIEČO O SEBE *" :value="playerData['aboutMe']" :isTextArea="true" emitType="2" @inputChanged="inputChanged" :error="v3$.aboutMe.$errors.length > 0 ? v3$.aboutMe.$errors[0].$message : ''" /></div>
         </div> 
-        <div class="button full-width"><Button :buttonText="isSending"/></div>
+        <div class="button full-width"><Button buttonText="POSLAŤ"/></div>
     </form>
 </template>
 
@@ -224,5 +224,11 @@ export default {
 
     @media screen and (max-width: 768px) {
         
+    }
+    
+    @media screen and (max-width: 600px) {
+        .button {
+            max-width: 100%;
+        }
     }
 </style>

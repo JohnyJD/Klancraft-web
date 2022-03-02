@@ -65,7 +65,7 @@ export default {
         min-height: 450px;
         max-width: 1000px;
         display: grid;
-        grid-template-rows: 30% auto 20%;
+        /*grid-template-rows: 30% auto 20%;*/
         background: #5C9239;
         background-image: url('@/assets/twitch-dark.svg');
         background-position: 20% center;
@@ -160,6 +160,52 @@ export default {
 
 
     @media screen and (max-width: 768px) {
-        
+        .top {
+            flex-direction: column;
+            justify-self: center !important;
+        }
+        .top > div {
+            padding-right: 0px !important;
+            margin: auto;
+            text-align: center;
+        }
+        .top > .streamer-name {
+            margin-top: 10px;
+        }
+        .info {
+            text-align: justify;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .stream-card {
+            width: 95%;
+            padding: 50px 5px;
+            border-left: 10px solid #1E5121;
+            border-right: 10px solid #1E5121;
+        }
+        .top h3 {
+            font-size: 1.8em;
+        }
+        .top > .streamer-name p {
+            font-size: 0.9em;
+        }
+        .info {
+            padding: 20px;
+        }
+        .info > div {
+            position: relative;
+            font-size: 0.9em;
+        }
+        .info > div::after, .info > div::before {
+            font-size: 3em;
+        }
+        .info > div::after {
+            top: -30px;
+            left: -20px;
+        }
+        .info > div::before {
+            right: -20px;
+            bottom: -30px;
+        }
     }
 </style>

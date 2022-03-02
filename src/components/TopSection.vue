@@ -63,6 +63,11 @@ export default {
     .right {
         width: 35%;
     }
+    .right video {
+        width: 100%;
+        max-height: 500px;
+        height: auto;
+    }
     #top h1 {
         font-size: 5em;
         color: white;
@@ -95,6 +100,18 @@ export default {
             width: 100%;
             margin: 20px 0;
             text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        #top h1 {
+            font-size: 10vw;
+        }
+        #top p {
+            font-size: 4vw;
+        }
+        .right {
+            width: 50%;
         }
     }
 </style>

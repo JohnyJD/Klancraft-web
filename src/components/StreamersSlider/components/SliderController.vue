@@ -68,4 +68,16 @@ export default {
         width: 100%;
         height: auto;
     }
+
+    @media screen and (max-width: 768px) {
+        .control {
+            margin: 0 15px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .control {
+            width: 30px;
+            height: 30px;
+        }
+    }
 </style>

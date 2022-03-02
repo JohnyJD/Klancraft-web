@@ -83,4 +83,11 @@ export default {
     @media screen and (max-width: 768px) {
         
     }
+    @media screen and (max-width: 600px) {
+        .developers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <nav :class="{hide : !isDark}">
+    <nav :class="{hide : !isVisible}">
         <div class="nav-wrapper">
             <div class="nav-items">
                 <div class="nav-logo" @click="animateTo('top')">
@@ -23,23 +23,22 @@ import {ref, reactive} from 'vue'
 import animateToOffset from '@/navigation.js'
 export default {
     setup() {
-        const isDark = ref(false);
+        const isVisible = ref(false);
         const scrollingData = reactive({'about' : '', 'joinus' : '', 'streamers' : '', 'ourteam' : '', 'supportus' : '','contactus' : ''});
         const activeSection = ref(1);
         function onScroll(event) {
             if(window.scrollY > window.innerHeight/2) {
-                if(!isDark.value) {
-                    isDark.value = true;
+                if(!isVisible.value) {
+                    isVisible.value = true;
                     console.log("changed true");
                 }
             }
             else {
-                if(isDark.value) {
-                    isDark.value = false;
+                if(isVisible.value) {
+                    isVisible.value = false;
                      console.log("changed false");
                 }
             }
-            //console.log(window.scrollY + ' > ' +window.innerHeight/2 + '       ' + isDark.value);
         }
         function onScrolll(event) {
              for(const [key, _] of Object.entries(scrollingData)) {
@@ -74,10 +73,6 @@ export default {
             }
             let el = document.getElementById('contactus');
             console.log(el.offsetTop)
-
-            //let aboutUsOffset = [aboutUs.offsetTop, aboutUs.offsetHeight];
-            //console.log(aboutUsOffset[0] , aboutUsOffset[1]);
-            //if(window.scrollY) { 
         }
         function animateTo(sectionId) {
             let offset = 0;
@@ -86,7 +81,7 @@ export default {
             }
             animateToOffset(offset);
         }
-        return {onScroll, onScrolll, animateTo, isDark, scrollingData, activeSection}
+        return {onScroll, onScrolll, animateTo, isVisible, scrollingData, activeSection}
     },
     mounted() {
         for(const [key, _] of Object.entries(this.scrollingData)) {

@@ -123,5 +123,20 @@ export default {
         .streamers-flex h2 {
             font-size: 1.8em;
         }
+        .join {
+            width: 75% !important;
+            margin: auto;
+            flex-direction: column;
+            text-align: center;
+        }
+        .join > div.button {
+            margin-top: 15px;
+            min-width: 0px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .streamers-flex h2 {
+            font-size: 1.3em;
+        }
     }
 </style>
